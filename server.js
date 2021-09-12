@@ -7,22 +7,24 @@ const cors = require('cors');
 const client = redis.createClient("redis://:p2ec03b7b9eaa747c4b0d5cffe393f3d1ff1bfc866fdef5551aa9df07220514c2@ec2-46-137-29-64.eu-west-1.compute.amazonaws.com:22219");
 const { promisify } = require("util");
 const path = require('path');
+const cronJob = require('./cronjob');
 const getAsync = promisify(client.get).bind(client);
 
+
 app.use(cors());
+cronJob.start();
+
 
 app.get('/api/c', async (req, res) => {
   const ItJobbank = await getAsync('jobliste');
   const IndeedDA = await getAsync('indeed');
   const Jobindex = await getAsync('jobindex');
-  const Glassdoor = await getAsync('glassdoor');
 
-  const GlassDoor = await JSON.parse(Glassdoor);
   const IT = await JSON.parse(ItJobbank);
   const Indeed = await JSON.parse(IndeedDA);
   const JobIndex = await JSON.parse(Jobindex);
 
-  const FinalArray = IT.concat(Indeed, JobIndex, GlassDoor);
+  const FinalArray = IT.concat(Indeed, JobIndex);
   const shuffledArray = FinalArray.sort(() => 0.5 - Math.random)
 
   shuffledArray.map(job => {
@@ -85,14 +87,12 @@ app.get('/api/javascript', async (req, res) => {
   const ItJobbank = await getAsync('jobliste');
   const IndeedDA = await getAsync('indeed');
   const Jobindex = await getAsync('jobindex');
-  const Glassdoor = await getAsync('glassdoor');
 
-  const GlassDoor = await JSON.parse(Glassdoor);
   const IT = await JSON.parse(ItJobbank);
   const Indeed = await JSON.parse(IndeedDA);
   const JobIndex = await JSON.parse(Jobindex);
 
-  let FinalArray = IT.concat(Indeed, JobIndex, GlassDoor, IT);
+  let FinalArray = IT.concat(Indeed, JobIndex, IT);
   const shuffledArray = FinalArray.sort(() => 0.5 - Math.random)
 
   shuffledArray.map(job => {
@@ -116,14 +116,12 @@ app.get('/api/net', async (req, res) => {
   const ItJobbank = await getAsync('jobliste');
   const IndeedDA = await getAsync('indeed');
   const Jobindex = await getAsync('jobindex');
-  const Glassdoor = await getAsync('glassdoor');
 
-  const GlassDoor = await JSON.parse(Glassdoor);
   const IT = await JSON.parse(ItJobbank);
   const Indeed = await JSON.parse(IndeedDA);
   const JobIndex = await JSON.parse(Jobindex);
 
-  const FinalArray = IT.concat(Indeed, JobIndex, IT, GlassDoor);
+  const FinalArray = IT.concat(Indeed, JobIndex, IT);
   const shuffledArray = FinalArray.sort(() => 0.5 - Math.random)
 
   shuffledArray.map(job => {
@@ -146,15 +144,13 @@ app.get('/api/java', async (req, res) => {
   const ItJobbank = await getAsync('jobliste');
   const IndeedDA = await getAsync('indeed');
   const Jobindex = await getAsync('jobindex');
-  const Glassdoor = await getAsync('glassdoor');
 
-  const GlassDoor = await JSON.parse(Glassdoor);
   const IT = await JSON.parse(ItJobbank);
   const Indeed = await JSON.parse(IndeedDA);
   const JobIndex = await JSON.parse(Jobindex);
 
 
-  const FinalArray = IT.concat(Indeed, JobIndex, IT, GlassDoor);
+  const FinalArray = IT.concat(Indeed, JobIndex, IT);
   const shuffledArray = FinalArray.sort(() => 0.5 - Math.random)
 
   shuffledArray.map(job => {
@@ -176,14 +172,12 @@ app.get('/api/python', async (req, res) => {
   const ItJobbank = await getAsync('jobliste');
   const IndeedDA = await getAsync('indeed');
   const Jobindex = await getAsync('jobindex');
-  const Glassdoor = await getAsync('glassdoor');
 
-  const GlassDoor = await JSON.parse(Glassdoor);
   const IT = await JSON.parse(ItJobbank);
   const Indeed = await JSON.parse(IndeedDA);
   const JobIndex = await JSON.parse(Jobindex);
 
-  const FinalArray = IT.concat(Indeed, JobIndex, IT, GlassDoor);
+  const FinalArray = IT.concat(Indeed, JobIndex, IT);
   const shuffledArray = FinalArray.sort(() => 0.5 - Math.random)
   
   shuffledArray.map(job => {
@@ -207,14 +201,12 @@ app.get('/api/fullstack', async (req, res) => {
   const ItJobbank = await getAsync('jobliste');
   const IndeedDA = await getAsync('indeed');
   const Jobindex = await getAsync('jobindex');
-  const Glassdoor = await getAsync('glassdoor');
 
-  const GlassDoor = await JSON.parse(Glassdoor);
   const IT = await JSON.parse(ItJobbank);
   const Indeed = await JSON.parse(IndeedDA);
   const JobIndex = await JSON.parse(Jobindex);
 
-  const FinalArray = IT.concat(Indeed, JobIndex, IT, GlassDoor);
+  const FinalArray = IT.concat(Indeed, JobIndex, IT);
   const shuffledArray = FinalArray.sort(() => 0.5 - Math.random)
 
   shuffledArray.map(job => {
@@ -237,14 +229,12 @@ app.get('/api/frontend', async (req, res) => {
   const ItJobbank = await getAsync('jobliste');
   const IndeedDA = await getAsync('indeed');
   const Jobindex = await getAsync('jobindex');
-  const Glassdoor = await getAsync('glassdoor');
 
-  const GlassDoor = await JSON.parse(Glassdoor);
   const IT = await JSON.parse(ItJobbank);
   const Indeed = await JSON.parse(IndeedDA);
   const JobIndex = await JSON.parse(Jobindex);
 
-  let FinalArray = IT.concat(Indeed, JobIndex, IT, GlassDoor);
+  let FinalArray = IT.concat(Indeed, JobIndex, IT);
   const shuffledArray = FinalArray.sort(() => 0.5 - Math.random)
 
   shuffledArray.map(job => {
@@ -270,14 +260,12 @@ app.get('/api/junior', async (req, res) => {
   const ItJobbank = await getAsync('jobliste');
   const IndeedDA = await getAsync('indeed');
   const Jobindex = await getAsync('jobindex');
-  const Glassdoor = await getAsync('glassdoor');
 
-  const GlassDoor = await JSON.parse(Glassdoor);
   const IT = await JSON.parse(ItJobbank);
   const Indeed = await JSON.parse(IndeedDA);
   const JobIndex = await JSON.parse(Jobindex);
 
-  const FinalArray = IT.concat(Indeed, JobIndex, GlassDoor, IT);
+  const FinalArray = IT.concat(Indeed, JobIndex, IT);
   const shuffledArray = FinalArray.sort(() => 0.5 - Math.random)
 
   shuffledArray.map(job => {
@@ -302,14 +290,12 @@ app.get('/api/backend', async (req, res) => {
   const ItJobbank = await getAsync('jobliste');
   const IndeedDA = await getAsync('indeed');
   const Jobindex = await getAsync('jobindex');
-  const Glassdoor = await getAsync('glassdoor');
 
-  const GlassDoor = await JSON.parse(Glassdoor);
   const IT = await JSON.parse(ItJobbank);
   const Indeed = await JSON.parse(IndeedDA);
   const JobIndex = await JSON.parse(Jobindex);
 
-  const FinalArray = IT.concat(Indeed, JobIndex, IT, GlassDoor);
+  const FinalArray = IT.concat(Indeed, JobIndex, IT);
   const shuffledArray = FinalArray.sort(() => 0.5 - Math.random)
 
   shuffledArray.map(job => {
@@ -333,14 +319,12 @@ app.get('/api/machine', async (req, res) => {
   const ItJobbank = await getAsync('jobliste');
   const IndeedDA = await getAsync('indeed');
   const Jobindex = await getAsync('jobindex');
-  const Glassdoor = await getAsync('glassdoor');
 
-  const GlassDoor = await JSON.parse(Glassdoor);
   const IT = await JSON.parse(ItJobbank);
   const Indeed = await JSON.parse(IndeedDA);
   const JobIndex = await JSON.parse(Jobindex);
 
-  const FinalArray = IT.concat(Indeed, JobIndex, IT, GlassDoor);
+  const FinalArray = IT.concat(Indeed, JobIndex, IT);
   const shuffledArray = FinalArray.sort(() => 0.5 - Math.random)
 
  shuffledArray.map(job => {
@@ -365,14 +349,12 @@ app.get('/api/senior', async (req, res) => {
   const ItJobbank = await getAsync('jobliste');
   const IndeedDA = await getAsync('indeed');
   const Jobindex = await getAsync('jobindex');
-  const Glassdoor = await getAsync('glassdoor');
 
-  const GlassDoor = await JSON.parse(Glassdoor);
   const IT = await JSON.parse(ItJobbank);
   const Indeed = await JSON.parse(IndeedDA);
   const JobIndex = await JSON.parse(Jobindex);
 
-  const FinalArray = IT.concat(Indeed, JobIndex, IT, GlassDoor);
+  const FinalArray = IT.concat(Indeed, JobIndex, IT);
   const shuffledArray = FinalArray.sort(() => 0.5 - Math.random)
   
   shuffledArray.map(job => {
@@ -397,14 +379,12 @@ app.get('/api/cloud', async (req, res) => {
   const ItJobbank = await getAsync('jobliste');
   const IndeedDA = await getAsync('indeed');
   const Jobindex = await getAsync('jobindex');
-  const Glassdoor = await getAsync('glassdoor');
 
-  const GlassDoor = await JSON.parse(Glassdoor);
   const IT = await JSON.parse(ItJobbank);
   const Indeed = await JSON.parse(IndeedDA);
   const JobIndex = await JSON.parse(Jobindex);
 
-  const FinalArray = IT.concat(Indeed, JobIndex, IT, GlassDoor);
+  const FinalArray = IT.concat(Indeed, JobIndex, IT);
   const shuffledArray = FinalArray.sort(() => 0.5 - Math.random)
 
   shuffledArray.map(job => {
@@ -423,7 +403,7 @@ app.get('/api/cloud', async (req, res) => {
   return res.send(JSON.stringify(Cloud));
 })
 
-if(process.env.NODE_ENV === "production"){
+if(process.env.NODE_ENV !== "production"){
   app.use(express.static("build"));
   app.get('*', (req,res) => {
     req.sendFile(path.resolve(__dirname, 'build', 'index.html'))
