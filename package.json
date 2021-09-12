@@ -46,10 +46,5 @@
   },
   "devDependencies": {
     "json-loader": "^0.5.7"
-  },
-  "proxy":{
-    "/api": {
-      "target": "https://itarbejde.herokuapp.com/"
-    }
   }
 }

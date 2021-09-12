@@ -1,7 +1,7 @@
-let Indeed = require('./indeed');
-let Glassdoor = require('./glassdoor');
-let ITJobbank = require('./it-jobbank');
-let JobIndex = require('./jobindex');
+let Indeed = require('./webscraper/indeed');
+let Glassdoor = require('./webscraper/glassdoor');
+let ITJobbank = require('./webscraper/it-jobbank');
+let JobIndex = require('./webscraper/jobindex');
 
 let CronJob = require('cron').CronJob;
 let jobs = new CronJob('0 23 * * *', function () {
