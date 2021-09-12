@@ -1,0 +1,89 @@
+.MuiAppBar-colorPrimary{
+background-color: black;    
+}
+header{
+background-color: black;
+}
+
+.container{
+height: 100vh;
+display: flex;
+align-items: center;
+
+}
+.form-container > h1{
+font-family: 'Alata';
+}
+.container > p{
+width: 80%;
+}
+.fejl-bedsked{
+color: red;
+font-family: 'Roboto';
+text-align: center;
+}
+
+.validation{
+margin-top:10vh;
+}
+
+
+.kontakt-form{
+width: 50%;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.form-container > p{
+width: 78%;
+}
+
+.bedsked-sendt{
+height: 10vh;
+width: 30vw;
+margin: 0 auto;
+background-color: black;
+color: black;
+}
+.kontakt-info > p{
+width: 80%;
+font-family: 'Alata';
+font-size: 1.8rem;
+}
+
+.kontakt-info{
+width: 50%;
+height: 100%;
+display:flex;
+align-items: center;
+justify-content: center;
+color:white;
+background-color: black;
+}
+
+.form-container{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+@media screen and (max-width: 800px){
+.container{
+display:block;
+}
+.kontakt-form{
+width: 100%;
+}
+.kontakt-info{
+width: 100%;
+}
+.MuiFormControl-root{
+width: 70vw;
+}
+
+.mobil-kontakt{
+    display: block;
+}
+}
+

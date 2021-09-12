@@ -1,0 +1,56 @@
+
+.MuiTabs-root{
+border-top:3px solid white;
+}
+
+.MuiAppBar-colorPrimary{
+background-color: black;
+}
+.logo{
+  font-family: 'Alata';
+  color: white;
+  flex:1;
+  margin-left: 2vw;
+}
+.logo > span{
+color: red;
+}
+.header-container > div{
+background-color: black;
+width: 50vw;
+}
+.header-container > div > button{
+color: white;
+}
+.secondClass > .Mui-selected > span{
+color: red;
+}
+.header-container{
+background-color:black;
+display: flex;
+align-items: center;
+}
+
+.header{
+    height:55vh;
+    display: flex;
+    background-color:#f3f3f3;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+    .MuiBottomNavigation-root > a{
+    color: white;  
+    }
+    
+   .MuiBottomNavigation-root .Mui-selected{
+      color:red;
+    }
+
+    .MuiBottomNavigation-root > .Mui-selected > span{
+    color: red;
+    }
+        
+       .input{
+         display: flex;
+       }
