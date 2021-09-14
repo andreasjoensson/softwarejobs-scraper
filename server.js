@@ -79,7 +79,7 @@ let Software = shuffledArray.filter(job => {
   return job.Titel.match(Regex);
 })
 
-return res.send(JSON.stringify(Software));
+return res.send(Software);
 })
 
 

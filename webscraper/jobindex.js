@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const redis = require("redis");
-const client = redis.createClient("redis://:p2ec03b7b9eaa747c4b0d5cffe393f3d1ff1bfc866fdef5551aa9df07220514c2@ec2-46-137-29-64.eu-west-1.compute.amazonaws.com:22219");
+const client = redis.createClient("    redis://:p13ca9079e54cb6437aa58f0ffa30dc840a269ac8a8cdab6b0591fa95f60b6205@ec2-52-214-71-161.eu-west-1.compute.amazonaws.com:12890");
 const {promisify} = require("util");
 const setAsync = promisify(client.set).bind(client);
 
