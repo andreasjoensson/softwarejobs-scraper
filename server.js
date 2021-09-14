@@ -4,7 +4,11 @@ const port = process.env.PORT || 3003;
 
 const redis = require('redis');
 const cors = require('cors');
-const client = redis.createClient("redis://:p2ec03b7b9eaa747c4b0d5cffe393f3d1ff1bfc866fdef5551aa9df07220514c2@ec2-46-137-29-64.eu-west-1.compute.amazonaws.com:22219");
+const client = redis.createClient("redis://:p2ec03b7b9eaa747c4b0d5cffe393f3d1ff1bfc866fdef5551aa9df07220514c2@ec2-46-137-29-64.eu-west-1.compute.amazonaws.com:22220",{
+  tls: {
+      rejectUnauthorized: false
+  }
+});
 const { promisify } = require("util");
 const path = require('path');
 const cronJob = require('./cronjob');
@@ -50,16 +54,12 @@ return res.send(JSON.stringify(Software));
 
 
 
-app.get('/jobs', async (req, res) => {
+app.get('/api/jobs', async (req, res) => {
   const ItJobbank = await getAsync('jobliste');
-
-
-
   const IT = await JSON.parse(ItJobbank);
-
-
   const FinalArray = IT;
   const shuffledArray = FinalArray.sort(() => 0.5 - Math.random)
+console.log(shuffledArray); 
 
   shuffledArray.map(job => {
     let jobz = job.Lokation.toLowerCase()
@@ -78,8 +78,8 @@ let Software = shuffledArray.filter(job => {
   let Regex = new RegExp("software", 'gi')
   return job.Titel.match(Regex);
 })
-
-return res.send(Software);
+console.log(Software);
+return res.send(JSON.stringify(Software));
 })
 
 
@@ -403,7 +403,7 @@ app.get('/api/cloud', async (req, res) => {
   return res.send(JSON.stringify(Cloud));
 })
 
-if(process.env.NODE_ENV === "production"){
+if(process.env.NODE_ENV !== "production"){
   app.use(express.static("build"));
   app.get('*', (req,res) => {
     req.sendFile(path.resolve(__dirname, 'build', 'index.html'))
