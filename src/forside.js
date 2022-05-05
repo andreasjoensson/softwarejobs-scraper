@@ -65,7 +65,7 @@ const [values, setValues] = React.useState(0);
 useEffect(() => {
   async function fetchData (){
   setLoading(true);
-  const resp = await fetch("https://itarbejde.herokuapp.com/api/jobs");
+  const resp = await fetch("http://localhost:3003/api/jobs");
   const data = await resp.json();
   setJob(data);
   setLoading(false); 
@@ -90,7 +90,7 @@ setCurrentPage(number);
 
 const getJobs = async (funktion) => {
 setLoading(true)
-const res = await fetch(`https://itarbejde.herokuapp.com/api/${funktion}`);
+const res = await fetch(`http://localhost:3003/api/${funktion}`);
 setJob(await res.json());
 setLoading(false);
 }
