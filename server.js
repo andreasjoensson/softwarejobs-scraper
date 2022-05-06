@@ -403,13 +403,6 @@ app.get('/api/cloud', async (req, res) => {
   return res.send(JSON.stringify(Cloud));
 })
 
-if(process.env.NODE_ENV === "production"){
-  app.use(express.static("build"));
-  app.get('*', (req,res) => {
-    req.sendFile(path.resolve(__dirname, 'build', 'index.html'))
-  })
-}
-
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
