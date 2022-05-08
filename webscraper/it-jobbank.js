@@ -35,7 +35,7 @@ return jobs
  return jobs.concat(await getJob(nextUrl))
 }
 };
-const browser = await puppeteer.launch({headless:false});
+const browser = await puppeteer.launch({ignoreDefaultArgs: ['--disable-extensions']});
 const firstUrl = "https://www.it-jobbank.dk/job/software-webudvikling?page=1"
 const jobListe = await getJob(firstUrl);
 const success = setAsync('jobliste', JSON.stringify(jobListe))
