@@ -42,6 +42,7 @@ const browser = await puppeteer.launch({
       '--no-sandbox',
       '--disable-setuid-sandbox',
     ],
+    headless:true,
   });
 const firstUrl = "https://dk.indeed.com/jobs?q=Developer&fromage=15&radius=25&start=10"
 const jobListe = await getJob(firstUrl);
