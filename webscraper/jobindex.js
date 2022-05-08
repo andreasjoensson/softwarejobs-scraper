@@ -50,6 +50,7 @@ const browser = await puppeteer.launch({
 const firstUrl = "https://www.jobindex.dk/jobsoegning/it/systemudvikling?page=1"
 const jobListe = await getJob(firstUrl);
 const success = setAsync('jobindex', JSON.stringify(jobListe))
+console.log("NÅET SÅ LANGT")
 console.log({success});
 
 await browser.close();
