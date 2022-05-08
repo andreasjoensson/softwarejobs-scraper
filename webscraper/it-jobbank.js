@@ -4,7 +4,6 @@ const client = redis.createClient("redis://:p2ec03b7b9eaa747c4b0d5cffe393f3d1ff1
   tls: {
       rejectUnauthorized: false
   },
-  legacyMode: true
 });
 const {promisify} = require("util");
 const setAsync = promisify(client.set).bind(client);

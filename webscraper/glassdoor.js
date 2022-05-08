@@ -6,12 +6,15 @@ const client = redis.createClient("redis://:p2ec03b7b9eaa747c4b0d5cffe393f3d1ff1
       rejectUnauthorized: false
   }
 });
+
+module.exports = (async () => {
+async function getJob (url) {
+  await client.connect();
 const {promisify} = require("util");
 const setAsync = promisify(client.set).bind(client);
 console.log("hey")
 
-module.exports = (async () => {
-async function getJob (url) {
+
   const page = await browser.newPage();
   await page.setDefaultNavigationTimeout(0);
   await page.setViewport({ width: 1280, height: 720 });
