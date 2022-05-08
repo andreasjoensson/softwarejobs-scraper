@@ -11,7 +11,7 @@ const setAsync = promisify(client.set).bind(client);
 module.exports  = (async () => { 
  async function getJob (url) {
   const page = await browser.newPage();
-  await page.setDefaultNavigationTimeout(0);
+  //await page.setDefaultNavigationTimeout(0);
   await page.setViewport({ width: 1280, height: 720 });
     await page.goto(url);
 
