@@ -37,7 +37,12 @@ return jobs
  return jobs.concat(await getJob(nextUrl));
 }
 };
-const browser = await puppeteer.launch({ignoreDefaultArgs: ['--disable-extensions']});
+const browser = await puppeteer.launch({
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+    ],
+  });
 const firstUrl = "https://dk.indeed.com/jobs?q=Developer&fromage=15&radius=25&start=10"
 const jobListe = await getJob(firstUrl);
 const success = setAsync('indeed', JSON.stringify(jobListe));

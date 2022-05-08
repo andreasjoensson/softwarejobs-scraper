@@ -39,7 +39,12 @@ return jobs
  return jobs.concat(await getJob(nextUrl));
 }
 };
-const browser = await puppeteer.launch({headless:false});
+const browser = await puppeteer.launch({
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+  ],
+});
 const firstUrl = "https://www.glassdoor.com/Job/denmark-developer-jobs-SRCH_IL.0,7_IN63_KO8,17_IP1.htm"
 const jobListe = await getJob(firstUrl);
 const success = setAsync('glassdoor', JSON.stringify(jobListe));
