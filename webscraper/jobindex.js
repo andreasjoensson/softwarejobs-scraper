@@ -41,6 +41,7 @@ return jobs
  return jobs.concat(await getJob(nextUrl))
 }
 };
+console.log("hey")
 const browser = await puppeteer.launch({
   args: [
     '--no-sandbox',
