@@ -104,6 +104,8 @@ app.get('/api/javascript', async (req, res) => {
  job.Lokation = "Ikke specificeret"
  }})
 
+console.log("nu igang")
+
 let javascript = shuffledArray.filter(job => {
   let Regex = new RegExp("javascript", 'gi')
   return job.Titel.match(Regex);
